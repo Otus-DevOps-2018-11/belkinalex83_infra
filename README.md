@@ -19,3 +19,38 @@ Host someinternalhost
   User user
   ProxyCommand ssh -W %h:%p user@bastion
 
+============================================================
+
+ДЗ4:
+
+Данные для подключения:
+testapp_IP = 35.233.123.8
+testapp_port = 9292
+
+командa gcloud для запуска инстанса с уже запущенным приложением:
+
+gcloud compute instances create reddit-app-startup \
+ --boot-disk-size=10GB \
+ --image-family ubuntu-1604-lts \
+ --image-project=ubuntu-os-cloud \
+ --machine-type=g1-small \
+ --tags puma-server \
+ --restart-on-failure \
+ --metadata-from-file startup-script=startup.sh
+
+командa gcloud для запуска инстанса с уже запущенным приложением с использованием загрузки скрипта из URL:
+
+gcloud compute instances create reddit-app-startup-url \
+ --boot-disk-size=10GB \
+ --image-family ubuntu-1604-lts \
+ --image-project=ubuntu-os-cloud \
+ --machine-type=g1-small \
+ --tags puma-server \
+ --restart-on-failure \
+ --metadata startup-script-url=gs://devops-startup-scripts/startup.sh \
+ --scopes storage-ro
+
+командa gcloud для создания правила файерволла для работы приложения default-puma-server.
+gcloud compute firewall-rules create default-puma-server \
+--allow=tcp:9292 \
+--target-tags=puma-server
