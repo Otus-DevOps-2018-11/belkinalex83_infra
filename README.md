@@ -54,3 +54,17 @@ gcloud compute instances create reddit-app-startup-url \
 gcloud compute firewall-rules create default-puma-server \
 --allow=tcp:9292 \
 --target-tags=puma-server
+
+============================================================
+
+ДЗ5:
+
+В процессе сделано:
+
+- Установка Packer
+- Создал ADC для доступа Packer к GCP.
+- Создал шаблон Packer для сборки  базового образа ubuntu с установленными ruby и mongodb и задеплоил в него приложение.
+- Параметризировал созданный шаблон, добавил в шаблон несколько переменных, файл variables.json в .gitignore и variables.json.example в репозиторий.
+- Создал образ семейства reddit-full, добавив в него systemd unit для автозагрузки веб-сервера Puma с приложением и деплой приложения (задание со *)
+- Добавил скрипт создания машины из готового образа redit-full (задание со *).
+
