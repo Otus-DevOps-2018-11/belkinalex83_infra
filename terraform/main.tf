@@ -5,10 +5,17 @@ provider "google" {
   zone    = "${var.zone}"
 }
 
-resource "google_compute_project_metadata_item" "appuser1" {
-  key = "ssh-keys"
-  project = "${var.project}"
-  value = "appuser1:${file(var.public_key_path)}"
+# resource "google_compute_project_metadata_item" "appuser1" {
+#  key = "ssh-keys"
+#  project = "${var.project}"
+#  value = "appuser1:${file(var.public_key_path)}"
+#}
+
+resource "google_compute_project_metadata" "appusers" {
+  metadata {
+    project = "${var.project}"
+    ssh-keys = "appuser1:${file(var.public_key_path)} appuser2:${file(var.public_key_path)} appuser3:${file(var.public_key_path)}"
+     }
 }
 
 resource "google_compute_instance" "app" {
