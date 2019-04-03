@@ -5,19 +5,23 @@ provider "google" {
 }
 
 module "app" {
-  source          = "../modules/app"
-  public_key_path = "${var.public_key_path}"
-  zone            = "${var.zone}"
-  app_disk_image  = "${var.app_disk_image}"
-  env             = "${var.env}"
+  source            = "../modules/app"
+  public_key_path   = "${var.public_key_path}"
+  zone              = "${var.zone}"
+  app_disk_image    = "${var.app_disk_image}"
+  env               = "${var.env}"
+  private_key_path  = "${var.private_key_path}"
+  db_internal_ip    = "${module.db.db_internal_ip}"
+  provision_enabled = true
 }
 
 module "db" {
-  source          = "../modules/db"
-  public_key_path = "${var.public_key_path}"
-  zone            = "${var.zone}"
-  db_disk_image   = "${var.db_disk_image}"
-  env             = "${var.env}"
+  source           = "../modules/db"
+  public_key_path  = "${var.public_key_path}"
+  zone             = "${var.zone}"
+  db_disk_image    = "${var.db_disk_image}"
+  env              = "${var.env}"
+  private_key_path = "${var.private_key_path}"
 }
 
 module "vpc" {
