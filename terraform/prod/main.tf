@@ -12,7 +12,7 @@ module "app" {
   env               = "${var.env}"
   private_key_path  = "${var.private_key_path}"
   db_internal_ip    = "${module.db.db_internal_ip}"
-  provision_enabled = true
+  provision_enabled = false
 }
 
 module "db" {

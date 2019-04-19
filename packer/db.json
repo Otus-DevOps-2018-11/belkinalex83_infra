@@ -6,16 +6,15 @@
             "image_name": "reddit-db-base-{{timestamp}}",
             "image_family": "reddit-db-base",
             "source_image_family": "ubuntu-1604-lts",
-            "zone": "europe-west1-b",
+            "zone": "us-east1-c",
             "ssh_username": "appuser",
-            "machine_type": "f1-micro"
+            "machine_type": "n1-standard-1"
         }
     ],
     "provisioners": [
 	{
-            "type": "shell",
-            "script": "scripts/install_mongodb.sh",
-            "execute_command": "sudo {{.Path}}"
+            "type": "ansible",
+            "playbook_file": "ansible/packer_db.yml"
         }
     ]
 }
