@@ -1,6 +1,6 @@
 ---
 - name: Provisioning configure app
-  hosts: all
+  hosts: app 
   become: true
   tasks:
     - name: Install ruby and rubygems and required packages
