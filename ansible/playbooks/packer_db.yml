@@ -1,6 +1,6 @@
 ---
 - name: Provisioning MongoDB
-  hosts: all 
+  hosts: db 
   become: true
   tasks:
     - name: Add MongoDB key

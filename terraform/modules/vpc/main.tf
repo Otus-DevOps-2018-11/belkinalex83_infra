@@ -29,3 +29,17 @@ resource "google_compute_firewall" "firewall_puma" {
   # Правило применимо для инстансов с перечисленными тэгами
   target_tags = ["reddit-app"]
 }
+
+resource "google_compute_firewall" "firewall_nginx" {
+  name = "default-allow-nginx-${var.env}"
+  network = "default"
+
+  allow {
+    protocol = "tcp"
+    ports = ["80"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+
+  target_tags = ["reddit-app"]
+}

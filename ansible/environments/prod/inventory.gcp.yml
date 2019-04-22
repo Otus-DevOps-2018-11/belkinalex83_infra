@@ -2,8 +2,8 @@ plugin: gcp_compute
 projects:
   - infra-223217
 groups:
-  app: "'-app-' in name"
-  db: "'-db-' in name"
+  app: "'-app-prod' in name"
+  db: "'-db-prod' in name"
 #hostnames:
 #  - name
 filters:
