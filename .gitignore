@@ -8,3 +8,11 @@ packer/variables.json
 jdauphant.nginx
 vault.key
 service_account_key.json
+# Vagrant & molecule
+.vagrant/
+*.log
+*.pyc
+.molecule
+.cache
+.pytest_cache
+
