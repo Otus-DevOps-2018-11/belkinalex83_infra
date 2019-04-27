@@ -15,4 +15,4 @@ service_account_key.json
 .molecule
 .cache
 .pytest_cache
-
+ansible/venv/
