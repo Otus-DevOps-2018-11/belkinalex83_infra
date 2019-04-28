@@ -1,25 +1,6 @@
 ---
 - name: Provisioning MongoDB
-  hosts: db 
+  hosts: all 
   become: true
-  tasks:
-    - name: Add MongoDB key
-      apt_key:
-        keyserver: keyserver.ubuntu.com
-        id: EA312927
-
-    - name: Add MongoDB repo
-      apt_repository:
-        repo: deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse
-        state: present
-    
-    - name: Install MongoDB
-      apt:
-        update_cache: yes
-        name: mongodb-org
-
-    - name: Start and enable service MongoDB
-      service:
-        name: mongod
-        enabled: yes
-        state: started 
+  roles:
+    - db

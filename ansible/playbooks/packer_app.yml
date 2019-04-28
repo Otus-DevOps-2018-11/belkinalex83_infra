@@ -1,15 +1,6 @@
 ---
 - name: Provisioning configure app
-  hosts: app 
+  hosts: all 
   become: true
-  tasks:
-    - name: Install ruby and rubygems and required packages
-      apt:
-        update_cache: yes
-        name: "{{ packages }}"
-      vars:
-         packages:
-         - ruby-full
-         - ruby-bundler
-         - build-essential
-
+  roles:
+    - app
